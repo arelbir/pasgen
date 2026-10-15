@@ -1,9 +1,14 @@
 name: Release
 
 # Builds installers for Windows (setup .exe + .msi), macOS (.dmg) and Linux (.deb, .AppImage, .rpm)
-# and attaches them to a GitHub Release. Runs on a version tag (v1.0.0) or manually.
+# and attaches them to the GitHub Release "v<version>" (created if missing).
+# Runs when the app version changes on main, on a version tag, or manually.
 on:
   push:
+    branches: [main]
+    paths:
+      - "src-tauri/tauri.conf.json"
+      - ".github/workflows/release.yml"
     tags: ["v*"]
   workflow_dispatch:
 
@@ -54,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
+          tagName: v__VERSION__
           releaseName: "Kasa v__VERSION__"
           releaseBody: |
             Kurulum dosyaları:

@@ -73,11 +73,11 @@ Masaüstü derlemesi için Rust ve [Tauri ön koşulları](https://v2.tauri.app/
 ## Yeni sürüm yayınlama
 
 ```bash
-# package.json, src-tauri/tauri.conf.json ve src-tauri/Cargo.toml içindeki sürümü güncelle, sonra:
-git tag v1.0.1 && git push origin v1.0.1
+# package.json, src-tauri/tauri.conf.json ve src-tauri/Cargo.toml içindeki sürümü güncelle,
+# main'e pushla. tauri.conf.json değişince Release iş akışı otomatik çalışır.
 ```
 
-`Release` iş akışı Windows, macOS ve Linux kurulum dosyalarını derleyip GitHub Release'e ekler.
+`Release` iş akışı Windows, macOS ve Linux kurulum dosyalarını derleyip `v<sürüm>` adlı GitHub Release'e ekler.
 
 ## Proje yapısı
 
